@@ -1,13 +1,21 @@
 class GamesController < ApplicationController
+  before_action :load_game, only: :show
+
   def index
   end
 
   def show
-    @game = Game.find(params[:id])
+    @board = Board.new(@game)
   end
 
   def create
-    game = Game.create
+    game = Game.create(secret: "SECRET")
     redirect_to game
+  end
+
+  private
+
+  def load_game
+    @game = Game.with_guesses.find(params[:id])
   end
 end
