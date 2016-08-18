@@ -1,35 +1,26 @@
 class Board
   def initialize(game)
-    @game = game
+    @state = game.state
   end
 
   def letters
     "A".."Z"
   end
 
-  def game_id
-    game.id
+  def status
+    if guessed_correctly?
+      :won
+    elsif game_over?
+      :lost
+    else
+      :in_progress
+    end
   end
 
-  def word
-    game.secret.gsub(/./) { |letter| masked(letter) }
-  end
-
-  def guessed?(letter)
-    guesses.any? { |guess| guess.letter == letter }
-  end
+  delegate :game_id, :word, :revealed_word, :game_over?, :lives_remaining, :guessed?, :guessed_correctly?,
+    to: :state
 
   private
 
-  attr_reader :game
-
-  delegate :guesses, to: :game
-
-  def masked(letter)
-    if guessed?(letter)
-      letter
-    else
-      "_"
-    end
-  end
+  attr_reader :state
 end

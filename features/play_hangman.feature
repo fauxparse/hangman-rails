@@ -37,4 +37,4 @@ Feature: Play a game of Hangman
       And I click "F"
      Then I should see "__O_TI_"
       And I should see "Game over"
-      And I should see "0 lives remaining"
+      And I should see "The word was GNOSTIC"
