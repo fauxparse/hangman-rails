@@ -15,6 +15,7 @@ Feature: Play a game of Hangman
       And I click "I"
       And I click "C"
      Then I should see "Congratulations!"
+      And I should see "GNOSTIC"
       And I should see "10 lives remaining"
 
   Scenario: I don’t guess the word before the time runs out
@@ -32,4 +33,5 @@ Feature: Play a game of Hangman
       And I click "D"
       And I click "F"
      Then I should see "Game over"
+      And I should see "_______"
       And I should see "0 lives remaining"
