@@ -1,3 +1,5 @@
-<% ("A".."Z").each do |letter| %>
-  <%= submit_tag letter, name: "guess", value: letter %>
+<%= form_for :guess, url: game_guesses_path(@game) do |form| %>
+  <% ("A".."Z").each do |letter| %>
+    <%= form.submit letter, name: "guess[letter]" %>
+  <% end %>
 <% end %>
