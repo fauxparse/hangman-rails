@@ -7,6 +7,10 @@ Given(/^the secret word is "([^"]*)"$/) do |word|
   game.update(secret: word)
 end
 
+Given(/^the secret word has (\d+) letters?$/) do |count|
+  game.update(secret: "X" * count.to_i)
+end
+
 Given(/^I am on the home page$/) do
   visit(root_url)
 end
@@ -29,4 +33,8 @@ end
 
 Then(/^I should be on the game page$/) do
   expect(page.current_path).to eq(game_path(game))
+end
+
+Then(/^I should see (\d+) blank spaces?$/) do |count|
+  expect(page).to have_content("_" * count.to_i)
 end
