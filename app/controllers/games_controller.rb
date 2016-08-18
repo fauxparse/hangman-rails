@@ -5,7 +5,7 @@ class GamesController < ApplicationController
   end
 
   def show
-    @board = Board.new(@game)
+    @board = GameState.new(@game)
   end
 
   def create
