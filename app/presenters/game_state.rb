@@ -40,7 +40,7 @@ class GameState
   end
 
   def letters
-    "A".."Z"
+    Game::LETTERS
   end
 
   def status
