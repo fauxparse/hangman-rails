@@ -1,6 +1,6 @@
 <%= @board.word %>
 
-<%= form_for :guess, url: game_guesses_path(@board.game_id), disabled: @board.game_over? do |form| %>
+<%= form_for :guess, url: game_guesses_path(@board.game_id), html: { disabled: @board.game_over? } do |form| %>
   <% @board.letters.each do |letter| %>
     <%= form.submit letter, name: "guess[letter]", disabled: @board.guessed?(letter) %>
   <% end %>

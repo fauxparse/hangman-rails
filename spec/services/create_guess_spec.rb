@@ -42,4 +42,18 @@ describe CreateGuess do
       service.call
     end
   end
+
+  context "when the game is over" do
+    let(:letter) { "X" }
+    before { game.secret.each_char { |char| CreateGuess.new(game, char).call } }
+
+    it "does not create the guess" do
+      expect { service.call }.not_to change { game.guesses.count }
+    end
+
+    it "fails" do
+      expect(service).to receive(:publish).with(:failure, an_instance_of(Guess))
+      service.call
+    end
+  end
 end

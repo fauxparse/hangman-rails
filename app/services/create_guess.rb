@@ -7,7 +7,9 @@ class CreateGuess
   end
 
   def call
-    if guess.save
+    if game_state.game_over?
+      publish(:failure, guess)
+    elsif guess.save
       if correct?
         publish(:correct, guess)
       else
