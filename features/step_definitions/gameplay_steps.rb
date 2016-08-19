@@ -38,3 +38,7 @@ end
 Then(/^I should see (\d+) blank spaces?$/) do |count|
   expect(page).to have_content("_" * count.to_i)
 end
+
+Then(/^the "([^"])" button should be disabled$/) do |letter|
+  expect(page).to have_button(letter, disabled: true)
+end

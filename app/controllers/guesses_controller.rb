@@ -2,7 +2,12 @@ class GuessesController < ApplicationController
   before_action :load_game
 
   def create
-    @game.guesses.create(guess_params)
+    CreateGuess.new(@game, guess_params[:letter])
+      .on(:correct)   { |guess| flash[:notice] = "Yes! #{guess.letter} is in the word." }
+      .on(:incorrect) { |guess| flash[:notice] = "Sorry, #{guess.letter} is not in the word." }
+      .on(:failure)   { |guess| flash[:notice] = "You can’t guess #{guess.letter}" }
+      .call
+
     redirect_to @game
   end
 

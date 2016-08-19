@@ -19,8 +19,12 @@ class GameState
     word == game.secret
   end
 
+  def correct_guesses
+    game.guesses.select { |guess| game.secret.include?(guess.letter) }
+  end
+
   def wrong_guesses
-    game.guesses.select { |guess| !game.secret.include?(guess.letter) }
+    game.guesses - correct_guesses
   end
 
   def lives_remaining
