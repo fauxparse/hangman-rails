@@ -1,0 +1,44 @@
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 0 -.25rem;
+
+  input[type="submit"] {
+    font-size: 1em;
+    line-height: 1em;
+    padding: .9375em;
+    margin: .125em;
+    background: $accent;
+    border: 1px solid $accent;
+    border-radius: .25em;
+    box-shadow: none;
+    width: 3em;
+    height: 3em;
+    color: white;
+    transition: transform .25s ease;
+
+    &:disabled {
+      background: transparent;
+      color: rgba($accent, .25);
+    }
+
+    &:focus {
+      transform: scale(1.2);
+      outline: none;
+    }
+  }
+
+  &[disabled] {
+    opacity: .5;
+    pointer-events: none;
+  }
+}

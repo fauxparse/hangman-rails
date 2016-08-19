@@ -1,4 +1,4 @@
-<%= @board.word %>
+<h1><%= @board.word %></h1>
 
 <%= form_for :guess, url: game_guesses_path(@board.game_id), html: { disabled: @board.game_over? } do |form| %>
   <% @board.letters.each do |letter| %>
