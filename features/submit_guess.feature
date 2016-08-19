@@ -1,5 +1,5 @@
 Feature: Submit guesses
-  As a hangman player
+  As a Hangman player
   I want to submit one letter guesses and be told whether my guess is either in the word, not in the word, or already guessed
   So that I can make progress in the game
 

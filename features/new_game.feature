@@ -1,5 +1,5 @@
 Feature: Start a new game
-  As a hangman player
+  As a Hangman player
   I would like to be able to start a new game of hangman
   So that I can play multiple games
 
